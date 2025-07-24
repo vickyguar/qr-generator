@@ -5,6 +5,7 @@ from constants import PDF_OUTPUT_DIR, ZIP_OUTPUT_PATH
 from utils import ensure_dir, generar_qr, generar_qr_contacto, cargar_plantilla, crear_pdf
 
 def cargar_dataframe():
+    # Aca habria que hacer un pd.read_csv con el archivo de inscriptos que me imagino que tiene esas columnas
     return pd.DataFrame({
         'nombre': ['Ramiro', 'Juan'],
         'apellido': ['Gijón', 'Augusto'],
@@ -20,6 +21,7 @@ def generar_pdfs(df):
         nombre = row['nombre']
         apellido = row['apellido']
         numero = str(row['mobilephone']).replace(" ", "").replace("+", "")
+        #Comentar y descomentar acá para probar con los dos tipos de qr
         #qr_reader = generar_qr(numero)
         qr_reader = generar_qr_contacto(nombre, apellido, numero)
         pdf_path = crear_pdf(nombre, apellido, qr_reader, plantilla_reader)
@@ -35,7 +37,7 @@ def comprimir_pdfs(pdf_paths):
     print(f"\nArchivo ZIP creado: {ZIP_OUTPUT_PATH}")
 
 def main():
-    df = cargar_dataframe()
+    df = cargar_dataframe() # cuando este la lista de inscriptos pasar x acá
     pdfs = generar_pdfs(df) # arma pdf
     comprimir_pdfs(pdfs) # comprime todo
 

@@ -7,9 +7,12 @@ from reportlab.lib.utils import ImageReader
 from constants import PAGE_WIDTH, PAGE_HEIGHT, PLANTILLA_PATH, QR_SIZE
 
 def ensure_dir(path):
-    os.makedirs(path, exist_ok=True)
+    os.makedirs(path, exist_ok=True) # para que no tire excep si la carpeta ya existe
 
 def generar_qr(numero):
+    """
+    Esta función es la que te arma el qr que te manda a enviar un wpp al contacto
+    """
     url = f'https://wa.me/{numero}'
     qr_img = qrcode.make(url)
     qr_io = io.BytesIO()
@@ -18,6 +21,9 @@ def generar_qr(numero):
     return ImageReader(qr_io)
 
 def generar_qr_contacto(nombre, apellido, numero):
+    """
+    Esta función es la te arma el qr que te manda a agendar el contacto
+    """
     vcard = f"""BEGIN:VCARD
 VERSION:3.0
 N:{apellido};{nombre}
@@ -31,6 +37,7 @@ END:VCARD"""
     return ImageReader(qr_io)
 
 def cargar_plantilla():
+    # la plantilla es un png todo en blanco jaja le podemos agregar el logo
     plantilla = Image.open(PLANTILLA_PATH).resize((int(PAGE_WIDTH), int(PAGE_HEIGHT)))
     plantilla_io = io.BytesIO()
     plantilla.save(plantilla_io, format='PNG')

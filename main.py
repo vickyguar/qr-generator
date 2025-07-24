@@ -36,8 +36,8 @@ def comprimir_pdfs(pdf_paths):
 
 def main():
     df = cargar_dataframe()
-    pdfs = generar_pdfs(df)
-    comprimir_pdfs(pdfs)
+    pdfs = generar_pdfs(df) # arma pdf
+    comprimir_pdfs(pdfs) # comprime todo
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,5 @@
 # qr-generator
-QR code generator using the ´´´qrcode´´´ library.
+QR code generator using the Python `qrcode` library.
 
 This tool allows you to generate a QR code for either:
 

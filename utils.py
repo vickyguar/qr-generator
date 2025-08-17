@@ -1,3 +1,6 @@
+"""
+Agrego documentación para probar
+"""
 import os
 import io
 import qrcode

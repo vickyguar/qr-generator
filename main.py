@@ -1,16 +1,17 @@
 import pandas as pd
 import os
 import zipfile
-from constants import PDF_OUTPUT_DIR, ZIP_OUTPUT_PATH
-from utils import ensure_dir, generar_qr, generar_qr_contacto, cargar_plantilla, crear_pdf
+from constants import *
+from utils import *
 
 def cargar_dataframe():
     # Aca habria que hacer un pd.read_csv con el archivo de inscriptos que me imagino que tiene esas columnas
     return pd.DataFrame({
-        'nombre': ['Ramiro', 'Juan'],
-        'apellido': ['Gijón', 'Augusto'],
-        'mobilephone': ['1111', '1111']
-    })
+    'nombre': ['Gonzalo Grau', 'Chiche Gelblung', 'Marcelo Polino', 'Fabricio Ballarini', 'Victoria Guarnieri'],
+    #'apellido': ['Gijón', 'Augusto'],
+    #'mobilephone': ['1111', '1111'],
+    'DNI' : ['43630060', '21953101', '22001847', '31858799', '44555989']
+})
 
 def generar_pdfs(df):
     ensure_dir(PDF_OUTPUT_DIR)
@@ -19,12 +20,14 @@ def generar_pdfs(df):
 
     for _, row in df.iterrows():
         nombre = row['nombre']
-        apellido = row['apellido']
-        numero = str(row['mobilephone']).replace(" ", "").replace("+", "")
+        #apellido = row['apellido']
+        #numero = str(row['mobilephone']).replace(" ", "").replace("+", "")
+        DNI = row['DNI']
         #Comentar y descomentar acá para probar con los dos tipos de qr
         #qr_reader = generar_qr(numero)
-        qr_reader = generar_qr_contacto(nombre, apellido, numero)
-        pdf_path = crear_pdf(nombre, apellido, qr_reader, plantilla_reader)
+        #qr_reader = generar_qr_contacto(nombre, apellido, numero)
+        qr_reader = generar_qr_check_in(DNI)
+        pdf_path = crear_pdf_check_in(nombre, qr_reader, plantilla_reader)
         pdf_paths.append(pdf_path)
         print(f"PDF generado: {pdf_path}")
 

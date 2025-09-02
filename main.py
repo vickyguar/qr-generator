@@ -42,7 +42,7 @@ def comprimir_pdfs(pdf_paths):
 def main():
     df = cargar_dataframe() # cuando este la lista de inscriptos pasar x acá
     pdfs = generar_pdfs(df) # arma pdf
-    comprimir_pdfs(pdfs) # comprime todo
+    # comprimir_pdfs(pdfs) # comprime todo
 
 if __name__ == "__main__":
     main()

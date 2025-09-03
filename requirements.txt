@@ -2,3 +2,6 @@ pandas
 qrcode
 Pillow
 reportlab
+dotenv
+# secure-smtplib
+# email

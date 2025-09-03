@@ -44,7 +44,8 @@ def generar_qr_check_in(DNI):
     """
     Esta función arma el qr que enviaremos por mail a los asistentes
     """
-    url = f"{WEBAPP_URL}?id={quote_plus(DNI)}"
+    url = f"{WEBAPP_URL}?id={DNI}"
+    print(url)
     qr_img = qrcode.make(url)
     qr_io = io.BytesIO()
     qr_img.save(qr_io, format='PNG')

@@ -1,7 +1,6 @@
-Buenas repres!
-Esto es una prueba, confirmen si les llegó a todos bien o hubo errores. Gracias!
-
-Estimado {participant_name}, 
-Por medio del presente, le hacemos llegar su código QR personal, el cual deberá presentar para ingresar al SABI Estudiantil.
+Estimado/a {participant_name},
+Por medio de la presente le hacemos llegar su código QR personal, el cual deberá presentar al momento de realizar su acreditación en el SABI Estudiantil.
+Le solicitamos tenerlo a mano al ingresar para agilizar el proceso de acceso.
+Muchas gracias por su colaboración!
 Le saludamos cordialmente,
-Representantes CESABI.
+Representantes CESABI
